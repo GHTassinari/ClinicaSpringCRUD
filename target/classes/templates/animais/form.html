@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Cadastro de Animal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <div th:replace="fragments/header :: header"></div>
+    
+    <div class="max-w-2xl mx-auto py-8 px-4">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="flex items-center mb-6"> <i class="fas fa-paw text-lime-600 text-2xl mr-3"></i>
+                <h2 class="text-2xl font-bold text-gray-800">Cadastro de Animal</h2>
+            </div>
+            <form th:action="@{/animais/salvar}" th:object="${animal}" method="post" class="space-y-6">
+                <input type="hidden" th:field="*{id}" />
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-tag mr-1"></i>Nome
+                    </label>
+                    <input type="text" th:field="*{nome}" placeholder="Digite o nome do animal"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-lime-500 focus:border-lime-500 transition-colors" />
+                </div>
+
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-dna mr-1"></i>Espécie
+                    </label>
+                    <input type="text" th:field="*{especie}" placeholder="Digite a espécie do animal"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-lime-500 focus:border-lime-500 transition-colors" />
+                </div>
+
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-calendar-alt mr-1"></i>Idade
+                    </label>
+                    <input type="number" th:field="*{idade}" placeholder="Digite a idade do animal"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-lime-500 focus:border-lime-500 transition-colors" />
+                </div>
+
+                <div class="relative">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-user mr-1"></i>Nome do Dono
+                    </label>
+                    <input type="text" th:field="*{dono}" placeholder="Digite o nome do dono"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-lime-500 focus:border-lime-500 transition-colors" />
+                </div>
+
+                <div class="flex gap-4 pt-4">
+                    <button type="submit"
+                        class="flex-1 bg-lime-600 hover:bg-lime-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center">
+                        <i class="fas fa-save mr-2"></i>Salvar
+                    </button>
+                    <a href="/animais"
+                        class="flex-1 bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center text-center">
+                        <i class="fas fa-times mr-2"></i>Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
